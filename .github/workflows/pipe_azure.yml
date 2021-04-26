@@ -30,7 +30,7 @@ jobs:
         fi
 
   push-image-docker:
-    needs: test
+    needs: valida-conteudo-docker
 
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
@@ -67,7 +67,7 @@ jobs:
           docker push $IMAGE_ID:$VERSION
   
   deploy-app-service-docker:
-    needs: push
+    needs: push-image-docker
     runs-on: ubuntu-latest
     container: microsoft/azure-cli
 
