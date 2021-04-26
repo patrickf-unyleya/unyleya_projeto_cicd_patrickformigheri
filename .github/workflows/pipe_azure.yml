@@ -78,6 +78,6 @@ jobs:
           az account show
           az account set -s 136d602b-4347-468c-a58f-81eb3d9b389d
           az appservice plan create --name AppSvc-DockerTutorial-plan --resource-group DevOps-rg --is-linux
-          az webapp create --resource-group DevOps-rg --plan AppSvc-DockerTutorial-plan --name osanamwebapp01 --deployment-container-image-name $IMAGE_ID:$VERSION
+          az webapp create --resource-group DevOps-rg --plan AppSvc-DockerTutorial-plan --name osanamwebapp01 --deployment-container-image-name osanamgcj/appmobead01:main
           az webapp show --name osanamwebapp01 --resource-group DevOps-rg
           
