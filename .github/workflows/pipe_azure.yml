@@ -12,7 +12,7 @@ env:
   IMAGE_NAME: appmobead01
 
 jobs:
-  test:
+  valida-conteudo-docker:
     name: 'test'
     runs-on: ubuntu-latest
 
@@ -29,7 +29,7 @@ jobs:
           docker build . --file Dockerfile
         fi
 
-  push:
+  push-image-docker:
     needs: test
 
     runs-on: ubuntu-latest
@@ -66,7 +66,7 @@ jobs:
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
   
-  deploy:
+  deploy-app-service-docker:
     needs: push
     runs-on: ubuntu-latest
     container: microsoft/azure-cli
