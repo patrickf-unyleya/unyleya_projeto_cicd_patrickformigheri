@@ -31,19 +31,6 @@ steps:
     #workingDirectory: # Optional
     #failOnStderr: false # Optional
 
-- task: SonarQubePrepare@4
-  inputs:
-    SonarQube: 'Sonarqube Osanam Azure'
-    scannerMode: 'MSBuild'
-    projectKey: 'Unyleya_-_DevOps_Unyleya_-_DevOps'
-    projectName: 'Unyleya - DevOps'
-
-- task: SonarQubeAnalyze@4
-
-- task: SonarQubePublish@4
-  inputs:
-    pollingTimeoutSec: '300'
-
 - task: NuGetToolInstaller@1
 - task: NuGetCommand@2
   inputs:
@@ -61,6 +48,19 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: SonarQubePrepare@4
+  inputs:
+    SonarQube: 'Sonarqube Osanam Azure'
+    scannerMode: 'MSBuild'
+    projectKey: 'Unyleya_-_DevOps_Unyleya_-_DevOps'
+    projectName: 'Unyleya - DevOps'
+
+- task: SonarQubeAnalyze@4
+
+- task: SonarQubePublish@4
+  inputs:
+    pollingTimeoutSec: '300'
 
 - task: PublishPipelineArtifact@1
   inputs:
