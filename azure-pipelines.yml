@@ -39,8 +39,11 @@ steps:
 - task: SonarQubePrepare@4
   inputs:
     SonarQube: 'Sonarqube Osanam Azure'
-    scannerMode: 'MSBuild'
-    projectKey: 'Unyleya_-_DevOps_Unyleya_-_DevOps'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'Unyleya_-_DevOps_Unyleya_-_DevOps'
+    cliProjectName: 'Unyleya - DevOps'
+    cliSources: '$(System.DefaultWorkingDirectory)'
 
 - task: VSBuild@1
   inputs:
@@ -49,15 +52,16 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
 - task: SonarQubeAnalyze@4
 
 - task: SonarQubePublish@4
   inputs:
     pollingTimeoutSec: '300'
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
 
 - task: PublishPipelineArtifact@1
   inputs:
