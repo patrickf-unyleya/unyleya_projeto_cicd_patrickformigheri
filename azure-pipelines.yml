@@ -43,12 +43,6 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
 - task: SonarQubePrepare@4
   inputs:
     SonarQube: 'Sonarqube Osanam Azure'
@@ -61,6 +55,10 @@ steps:
 - task: SonarQubePublish@4
   inputs:
     pollingTimeoutSec: '300'
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
 
 - task: PublishPipelineArtifact@1
   inputs:
