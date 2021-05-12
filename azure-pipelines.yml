@@ -46,9 +46,10 @@ steps:
 - task: SonarQubePrepare@4
   inputs:
     SonarQube: 'Sonarqube Osanam Azure'
-    scannerMode: 'MSBuild'
-    projectKey: 'Unyleya_-_DevOps_Unyleya_-_DevOps'
-    projectName: 'Unyleya - DevOps'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'Unyleya_-_DevOps_Unyleya_-_DevOps'
+    cliSources: '.'
 
 - task: SonarQubeAnalyze@4
 
